@@ -10,8 +10,11 @@ body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
+    background-color: #252525; /* Cor de fundo geral do site */
+    color: #fff;
 }
 
+/* --- HEADER / MENU --- */
 header {
     width: auto;
     position: fixed;
@@ -21,70 +24,30 @@ header {
     transform: translateX(-50%);
     z-index: 100;
     padding: 10px 30px;
-
     background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 100px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
-
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     animation: subir 0.5s ease-in-out forwards;
 }
 
 @keyframes subir {
-    from {
-        transform: translate(-50%, 10rem);
-    }
-
-    to {
-        transform: translate(-50%, 0);
-    }
+    from { transform: translate(-50%, 10rem); }
+    to { transform: translate(-50%, 0); }
 }
 
-.logo {
-    color: #fff;
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-}
+.logo { color: #fff; font-weight: 800; letter-spacing: 2px; font-size: 1.2rem; }
+.logo span { color: #ffffff; }
 
-.logo span {
-    color: #ffffff;
-}
-
-.nav-links li {
-    background: transparent;
-    box-shadow: none;
-    width: 45px;
-    height: 45px;
-}
-
-.nav-links li ion-icon {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.4em;
-}
-
-.nav-links li:hover ion-icon {
-    color: #fff;
-}
-
-
-.nav-links {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
+.nav-links { display: flex; gap: 15px; align-items: center; }
 .nav-links li {
     position: relative;
-    list-style: none;
     width: 50px;
     height: 50px;
     background: rgba(255, 255, 255, 0.1);
@@ -95,102 +58,48 @@ header {
     justify-content: center;
     align-items: center;
 }
-
-.nav-links li:hover::after {
-    opacity: 0.3;
-    filter: blur(20px);
-}
-
 .nav-links li::before {
     background: linear-gradient(45deg, var(--i), var(--j));
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+.nav-links li:hover { width: 150px; }
+.nav-links li:hover::before { opacity: 1; }
+.nav-links li:hover::after { opacity: 0.6; filter: blur(20px); }
+.nav-links li a { display: flex; justify-content: center; align-items: center; text-decoration: none; width: 100%; }
+.nav-links li .icon { color: rgba(255, 255, 255, 0.6); font-size: 1.5em; transition: 0.5s; display: flex; }
+.nav-links li:hover .icon { transform: scale(0); color: #fff; }
+.nav-links li .title { position: absolute; color: #fff; font-size: 0.9em; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transform: scale(0); transition: 0.5s; }
+.nav-links li:hover .title { transform: scale(1); }
 
-.nav-links li:hover {
-    width: 150px;
-}
-
-.nav-links li:hover::before {
-    opacity: 1;
-}
-
-.nav-links li:hover::after {
-    opacity: 0.6;
-}
-
-.nav-links li a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    width: 100%;
-}
-
-.nav-links li .icon {
-    color: #fff;
-    font-size: 1.5em;
-    transition: 0.5s;
-    display: flex;
-}
-
-.nav-links li:hover .icon {
-    transform: scale(0);
-}
-
-.nav-links li .title {
-    position: absolute;
-    color: #fff;
-    font-size: 0.9em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transform: scale(0);
-    transition: 0.5s;
-}
-
-.nav-links li:hover .title {
-    transform: scale(1);
-}
-
+/* --- HERO SECTION --- */
 .hero {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(104deg, #C4C4C4 50%, #000000 50.1%);
+    position: relative; /* GSAP assume o controle de fixar a tela */
+    overflow: hidden;
     display: flex;
     align-items: center;
+    z-index: 2; /* Mantém acima das outras seções durante o pinning */
 }
 
-.conteudo {
-    padding-left: 10%;
-    color: white;
-    font-family: 'Poppins', sans-serif;
+.bg-layer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    will-change: transform;
 }
+.bg-left { background-color: #C4C4C4; clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%); }
+.bg-right { background-color: #000000; clip-path: polygon(55% 0, 100% 0, 100% 100%, 45% 100%); }
 
-.conteudo h2 {
-    position: relative;
-    top: 1rem;
-    left: 0.3rem;
-    color: #0A0A0A;
-    font-weight: 600;
-    animation: esquerda 0.5s ease-in-out forwards;
-}
+.conteudo { z-index: 1; padding-left: 10%; }
+.conteudo h2 { position: relative; top: 1rem; left: 0.3rem; color: #0A0A0A; font-weight: 600; animation: esquerda 0.5s ease-in-out forwards; }
+.conteudo h1 { color: #0A0A0A; font-size: 50pt; margin-bottom: 10px; animation: esquerda 0.5s ease-in-out forwards; animation-delay: 0.1s; }
 
 @keyframes esquerda {
-    from {
-        transform: translateX(-500px);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
-.conteudo h1 {
-    color: #0A0A0A;
-    font-size: 50pt;
-    margin-bottom: 10px;
-    animation-delay: 0.1;
-    animation: esquerda 0.5s ease-in-out forwards;
+    from { transform: translateX(-500px); }
+    to { transform: translateX(0); }
 }
 
 .maquina-escrever {
@@ -201,26 +110,41 @@ header {
     padding-right: 5px;
     position: relative;
     bottom: 1rem;
-
     display: inline-block;
     min-height: 1.2em;
     min-width: 1px;
     vertical-align: middle;
     animation: aparecer 0.5s ease-in-out forwards;
 }
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
 
-@keyframes aparecer {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+/* --- SECTIONS (SOBRE, FORMAÇÃO, ETC) --- */
+.sessao {
+    min-height: 80vh;
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Fica abaixo da hero */
 }
+.container { max-width: 1000px; width: 100%; margin: 0 auto; }
+.text-center { text-align: center; }
 
-@keyframes blink {
-    50% {
-        border-color: transparent;
-    }
-}
+.titulo-sessao { font-size: 3rem; font-weight: 700; margin-bottom: 2rem; color: #fff; position: relative; display: inline-block; }
+.titulo-sessao::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 40px; height: 4px; background: #C4C4C4; border-radius: 2px; }
+
+.sobre-conteudo p { font-size: 1.2rem; color: #C4C4C4; line-height: 1.8; max-width: 800px; }
+
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 30px; border-radius: 20px; transition: transform 0.3s ease, background 0.3s ease; }
+.card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.06); }
+.card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.card span { display: block; color: #888; font-size: 0.9rem; margin-bottom: 15px; font-style: italic; }
+.card p { color: #C4C4C4; font-size: 1rem; line-height: 1.6; }
+
+.skills-container { display: flex; flex-wrap: wrap; gap: 15px; }
+.skill-tag { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 25px; border-radius: 50px; font-size: 1rem; font-weight: 500; color: #fff; letter-spacing: 1px; }
+
+.btn-contato { display: inline-block; padding: 15px 40px; background: #fff; color: #000; text-decoration: none; font-weight: 600; border-radius: 50px; font-size: 1.1rem; transition: 0.3s ease; }
+.btn-contato:hover { background: #C4C4C4; transform: scale(1.05); }

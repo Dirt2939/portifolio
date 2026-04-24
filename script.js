@@ -1,46 +1,47 @@
-const container = document.querySelector('.maquina-escrever');
-const words = ["Web Developer", "Software Engineer", "Full-stack Developer", "Data Analyst", "UI/UX Designer"];
+gsap.registerPlugin(ScrollTrigger);
 
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typeSpeed = 150; // Velocidade ao digitar
-const eraseSpeed = 100; // Velocidade ao apagar
-const delayBetweenWords = 2000; // Tempo que a palavra fica exposta
+// --- 1. MÁQUINA DE ESCREVER ---
+const containerTexto = document.querySelector('.maquina-escrever');
+const words = ["Web Developer", "Software Engineer", "Full-stack Developer", "UI/UX Designer"];
+let wordIndex = 0, charIndex = 0, isDeleting = false;
 
 function type() {
     const currentWord = words[wordIndex];
-
-    // Dentro da função type()
     if (isDeleting) {
-        // Se o charIndex for 0, mantemos uma string vazia, 
-        // mas o min-height do CSS vai segurar o tranco.
-        container.textContent = currentWord.substring(0, charIndex - 1);
+        containerTexto.textContent = currentWord.substring(0, charIndex - 1);
         charIndex--;
     } else {
-        // Adiciona uma letra
-        container.textContent = currentWord.substring(0, charIndex + 1);
+        containerTexto.textContent = currentWord.substring(0, charIndex + 1);
         charIndex++;
     }
 
-    // Lógica de pausa e troca de estado
-    let nextSpeed = isDeleting ? eraseSpeed : typeSpeed;
+    let nextSpeed = isDeleting ? 100 : 150;
 
     if (!isDeleting && charIndex === currentWord.length) {
-        // Terminou de digitar a palavra toda
-        nextSpeed = delayBetweenWords;
+        nextSpeed = 2000;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
-        // Terminou de apagar, vai para a próxima palavra
         isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length; // Volta ao início se acabar
+        wordIndex = (wordIndex + 1) % words.length;
         nextSpeed = 500;
     }
-
     setTimeout(type, nextSpeed);
 }
+window.onload = () => setTimeout(type, 500);
 
-// Inicia a animação quando a página carregar
-window.onload = () => {
-    setTimeout(type, 500); 
-};
+
+// --- 2. ANIMAÇÃO DA HERO (Abertura de Cortina) ---
+const heroTl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".hero",      // <-- Gatilho correto
+        start: "top top",
+        end: "+=100%",         // <-- Cria 100% de tela de "falso scroll" para a animação durar mais
+        scrub: 1,
+        pin: true,             // Trava a hero na tela
+    }
+});
+
+heroTl.to(".bg-left", { xPercent: -100, ease: "none" }, 0)
+    .to(".bg-right", { xPercent: 100, ease: "none" }, 0)
+    .to(".conteudo", { opacity: 0, scale: 0.8, ease: "none" }, 0);
+

@@ -1,69 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifolio - Rafael Pinheiro</title>
+    <title>Portfólio - Rafael Pinheiro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>
-        <div class="logo"><span>R</span></div>
-        <nav>
-            <ul class="nav-links">
-                <li style="--i:#1e293b;--j:#334155">
-                    <a href="#">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
-                <li style="--i:#1e293b;--j:#334155">
-                    <a href="#">
-                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                        <span class="title">Sobre</span>
-                    </a>
-                </li>
-                <li style="--i:#1e293b;--j:#334155">
-                    <a href="#">
-                        <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
-                        <span class="title">Formação</span>
-                    </a>
-                </li>
-                <li style="--i:#1e293b;--j:#334155">
-                    <a href="#">
-                        <span class="icon"><ion-icon name="code-working-outline"></ion-icon></span>
-                        <span class="title">Habilidades</span>
-                    </a>
-                </li>
-                <li style="--i:#1e293b;--j:#334155">
-                    <a href="#">
-                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                        <span class="title">Contato</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="hero">
-            <div class="conteudo">
-                <h2>Hi, I am</h3>
-                    <h1>Rafael Pinheiro</h1>
+<header>
+    <div class="logo"><span>R</span></div>
+    <nav>
+        <ul class="nav-links">
+            <li style="--i:#1e293b;--j:#334155">
+                <a href="#home"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span class="title">Home</span></a>
+            </li>
+            <li style="--i:#1e293b;--j:#334155">
+                <a href="#sobre"><span class="icon"><ion-icon name="person-outline"></ion-icon></span><span class="title">Sobre</span></a>
+            </li>
+            <li style="--i:#1e293b;--j:#334155">
+                <a href="#formacao"><span class="icon"><ion-icon name="school-outline"></ion-icon></span><span class="title">Formação</span></a>
+            </li>
+            <li style="--i:#1e293b;--j:#334155">
+                <a href="#habilidades"><span class="icon"><ion-icon name="code-working-outline"></ion-icon></span><span class="title">Habilidades</span></a>
+            </li>
+            <li style="--i:#1e293b;--j:#334155">
+                <a href="#contato"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><span class="title">Contato</span></a>
+            </li>
+        </ul>
+    </nav>
+</header>
 
-                    <div class="maquina-escrever"></div>
+<main>
+    <section id="home" class="hero">
+        <div class="bg-layer bg-left"></div>
+        <div class="bg-layer bg-right"></div>
+        <div class="conteudo">
+            <h2>Hi, I am</h2>
+            <h1>Rafael Pinheiro</h1>
+            <div class="maquina-escrever"></div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sessao">
+        <div class="container">
+            <h2 class="titulo-sessao">Sobre mim</h2>
+            <div class="sobre-conteudo">
+                <p>Sou um desenvolvedor apaixonado por criar experiências digitais fluidas e interativas. Transformo ideias em interfaces modernas, sempre focado em performance e design de alto nível.</p>
             </div>
         </div>
-    </main>
-</body>
+    </section>
+
+    <section id="formacao" class="sessao">
+        <div class="container">
+            <h2 class="titulo-sessao">Formação</h2>
+            <div class="grid-cards">
+                <div class="card gs-card">
+                    <h3>Engenharia de Software</h3>
+                    <span>Universidade Tech • 2021 - 2025</span>
+                    <p>Foco em arquitetura de sistemas, desenvolvimento web e metodologias ágeis.</p>
+                </div>
+                <div class="card gs-card">
+                    <h3>UI/UX Design Avançado</h3>
+                    <span>Curso X • 2025</span>
+                    <p>Especialização em prototipagem, design system e animações interativas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="sessao">
+        <div class="container">
+            <h2 class="titulo-sessao">Habilidades</h2>
+            <div class="skills-container">
+                <span class="skill-tag gs-skill">HTML5 & CSS3</span>
+                <span class="skill-tag gs-skill">JavaScript (ES6+)</span>
+                <span class="skill-tag gs-skill">React.js</span>
+                <span class="skill-tag gs-skill">GSAP Animations</span>
+                <span class="skill-tag gs-skill">Figma</span>
+                <span class="skill-tag gs-skill">Node.js</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="sessao text-center">
+        <div class="container">
+            <h2 class="titulo-sessao">Vamos conversar?</h2>
+            <p class="gs-revelar" style="color: #C4C4C4; margin-bottom: 30px;">Estou sempre aberto a novos projetos e parcerias.</p>
+            <a href="mailto:seuemail@exemplo.com" class="btn-contato gs-revelar">Me mande um E-mail</a>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="script.js"></script>
-
+</body>
 </html>
